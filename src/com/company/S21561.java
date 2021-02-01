@@ -1,14 +1,49 @@
 package com.company;
 
+import java.util.Base64;
 import java.util.Random;
 
 public class S21561 {
+
+    static int RandomWeight(){
+        int range = (28000- 10000) + 1;
+        return (int)(Math.random() * range) + 10000;
+    }
+    static int Randomtemp(){
+        int range = (7- 3) + 1;
+        return (int)(Math.random() * range) + 3;
+    }
+    static int RandomDensity(){
+        int range = (990- 400) + 1;
+        return (int)(Math.random() * range) + 400;
+    }
+    static int RandomHangers(){
+        int range = (1800- 1000) + 1;
+        return (int)(Math.random() * range) + 1000;
+    }
+    static String RandomContent(String []con){
+        int range = (con.length- 0) + 1;
+        return con[(int)(Math.random() * range) + 0];
+    }
+
+    static Container RandomContainer(Container a){          //losuje losowy obiekt zeby tablica nie byla po kolei wypelniona
+        Container[] tab = new Container[6];
+        tab[0]=a;
+        //tab[1]=b;
+       // tab[2]=c;
+       // tab[3]=d;
+        //tab[4]=e;
+       // tab[5]=f;
+       // int range = (5- 0) + 1;
+        //return tab[(int)(Math.random() * range) + 0];
+        return tab[0];
+    }
 
     public static void main(String[] args) {
         Container c1 = new Container(1,"piach");
         BasicContainer a =new BasicContainer(2,"piach");
         ColdContainer b =new ColdContainer(2,"mleko w kartonach",-14);
-        LiquidContainer c =new LiquidContainer(2000,"paliwo",true);
+        LiquidContainer c =new LiquidContainer(2000,"paliwo",12);
         LooseContainer d =new LooseContainer(3500,"koparka", 12);
         WardrobeContainer e =new WardrobeContainer(4000,"ubrania", 1500);
         PlatformContainer f=new PlatformContainer(4000,"dziwg");
@@ -17,6 +52,11 @@ public class S21561 {
         Container[] fillContainers = new Container[15000];
 
 
+    /*
+        for(int i=0;i<fillContainers.length;i++){
+            fillContainers[i]=
+        }
+       */
         String[]  BasicContainerContent = new String[7];
         BasicContainerContent[0]="AGD";
         BasicContainerContent[1]="RTV";
@@ -70,6 +110,9 @@ public class S21561 {
         PlatformContainer[4]="Materialy Budowlane";
         PlatformContainer[5]="Posag";
         PlatformContainer[6]="Lodz";
+
+
+        System.out.println(RandomContainer(new BasicContainer(RandomWeight(),RandomContent(BasicContainerContent))));
 
     }
 
@@ -126,10 +169,10 @@ class ColdContainer extends Container{
 }
 
 class LiquidContainer extends Container{
-    boolean flammable;
-    public LiquidContainer(int weight, String content,boolean flammable) {
+    int density;
+    public LiquidContainer(int weight, String content,int density) {
         super(weight, content);
-        this.flammable=flammable;
+        this.density=density;
     }
 
     @Override
@@ -137,7 +180,7 @@ class LiquidContainer extends Container{
         return "LiquidContainer{" +
                 "weight=" + weight +
                 ", content='" + content + '\'' +
-                ", flammable=" + flammable +
+                ", flammable=" + density +
                 '}';
     }
 }
