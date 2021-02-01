@@ -9,7 +9,7 @@ public class S21561 {
         BasicContainer a =new BasicContainer(2,"piach");
         ColdContainer b =new ColdContainer(2,"mleko w kartonach",-14);
         LiquidContainer c =new LiquidContainer(2000,"paliwo",true);
-        OverWeightContainer d =new OverWeightContainer(3500,"koparka", "zolta");
+        LooseContainer d =new LooseContainer(3500,"koparka", 12);
         WardrobeContainer e =new WardrobeContainer(4000,"ubrania", 1500);
         PlatformContainer f=new PlatformContainer(4000,"dziwg");
         System.out.println(a+"\n"+b+"\n"+c+"\n"+d+"\n"+e+"\n"+f);
@@ -17,12 +17,59 @@ public class S21561 {
         Container[] fillContainers = new Container[15000];
 
 
-        String[]  BasicContainerContent = new String[5];
+        String[]  BasicContainerContent = new String[7];
         BasicContainerContent[0]="AGD";
         BasicContainerContent[1]="RTV";
         BasicContainerContent[2]="Czesci samochodowe";
         BasicContainerContent[3]="Akcesoria rolnicze";
         BasicContainerContent[4]="Artykuly spozywcze";
+        BasicContainerContent[5]="Wsporniki meblowe";
+        BasicContainerContent[6]="Przewody elektryczne";
+
+        String []ColdContainer= new String [7];
+        ColdContainer[0]="Mleko w kartonach";
+        ColdContainer[1]="Mieso";
+        ColdContainer[2]="Ryby";
+        ColdContainer[3]="Lody";
+        ColdContainer[4]="Owoce";
+        ColdContainer[5]="Warzywa";
+        ColdContainer[6]="Czekolada";
+
+        String[]  LiquidContainer = new String[7];
+        LiquidContainer[0]="Paliwo";
+        LiquidContainer[1]="Mleko";
+        LiquidContainer[2]="Amoniak";
+        LiquidContainer[3]="Piwo";
+        LiquidContainer[4]="Farba";
+        LiquidContainer[5]="Sok pomarańczowy";
+        LiquidContainer[6]="CocaCola";
+
+        String[] LooseContainerContent = new String [7];
+        LooseContainerContent[0]="Piach";
+        LooseContainerContent[1]="Ziemia";
+        LooseContainerContent[2]="Kwarc";
+        LooseContainerContent[3]="Kamienie";
+        LooseContainerContent[4]="Zwir";
+        LooseContainerContent[5]="Wegiel";
+        LooseContainerContent[6]="Otoczaki";
+
+        String []WardrobeContainer = new String[7];
+        WardrobeContainer[0]="Ubrania Sportowe";
+        WardrobeContainer[1]="Ubrania Zimowe";
+        WardrobeContainer[2]="Ubrania Formalne";
+        WardrobeContainer[3]="Ubrania Letnie";
+        WardrobeContainer[4]="Ubrania Jesienne";
+        WardrobeContainer[5]="Ubrania Wiosenne";
+        WardrobeContainer[6]="Ubrania Pracownicze";
+
+        String []PlatformContainer = new String[7];
+        PlatformContainer[0]="Samochod";
+        PlatformContainer[1]="Wagon Pociagu";
+        PlatformContainer[2]="Czesci do Czolgu";
+        PlatformContainer[3]="Spychacz";
+        PlatformContainer[4]="Materialy Budowlane";
+        PlatformContainer[5]="Posag";
+        PlatformContainer[6]="Lodz";
 
     }
 
@@ -96,12 +143,11 @@ class LiquidContainer extends Container{
 }
 
 
-class OverWeightContainer extends Container{
-    String flag;        //flaga kontenera
-    public OverWeightContainer(int weight, String content,String flag) {
+class LooseContainer extends Container{
+    int density;        //gestosc
+    public LooseContainer(int weight, String content,int density) {
         super(weight, content);
-        this.flag=flag;
-        System.out.println(flag);
+        this.density=density;
     }
 
 
@@ -110,7 +156,7 @@ class OverWeightContainer extends Container{
         return "OverWeightContainer{" +
                 "weight=" + weight +
                 ", content='" + content + '\'' +
-                ", flag=" + flag +
+                ", density=" + density +
                 '}';
     }
 }
