@@ -38,6 +38,8 @@ public class S21561 {
         return tab[(int)(Math.random() * range) + 0];
     }
 
+    static int id=0;
+    static int id2=0;
     public static void main(String[] args) {
 
         Container[] fillContainers = new Container[15000];
@@ -131,14 +133,13 @@ public class S21561 {
         Container[][][] Ship = new Container[5][5][600];        //wypelnianie kontenerowca
         for(int h=0;h<Ship.length;h++){                 //petla do zmiany wysokosci czyli pietra
             for(int g=0;g<Ship[h].length;g++){                 //petla do zmiany rzedu
-                for(int i=0;i<Ship[0][h].length;i++){       //petla do zmiany pozycji w rzedzie
-                    Ship[h][g][i]=fillContainers[i];
+                for(int i=0;i<Ship[h][g].length;i++){       //petla do zmiany pozycji w rzedzie
+                    id++;
+                    Ship[h][g][i]=fillContainers[id-1];     //id-1 bo talbica jest do 15000 a zaczyna od 0 wiec musi byc 14999
                 }
             }
         }
-
-
-        System.out.println("Pierwszy rzad zapelniony");
+        System.out.println("Statek wypelniony kontenerami, najciezsze znajduja sie na dole");
 
 
     }
@@ -205,7 +206,7 @@ class LiquidContainer extends Container{
         return "LiquidContainer{" +
                 "weight=" + weight +
                 ", content='" + content + '\'' +
-                ", flammable=" + density +
+                ", density=" + density +
                 '}';
     }
 }
