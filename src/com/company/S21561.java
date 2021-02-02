@@ -42,8 +42,6 @@ public class S21561 {
 
         Container[] fillContainers = new Container[15000];
 
-
-
         String[]  BasicContainerContent = new String[7];
         BasicContainerContent[0]="AGD";
         BasicContainerContent[1]="RTV";
@@ -99,6 +97,7 @@ public class S21561 {
         PlatformContainerContent[6]="Lodz";
 
 
+
         for(int i=0;i<fillContainers.length;i++){       //wypelnienie  losowymi kontenerami z losowymi wartosciami tablciy
             fillContainers[i]=RandomContainer(
                     new BasicContainer(RandomWeight(),RandomContent(BasicContainerContent)),
@@ -116,12 +115,33 @@ public class S21561 {
                 out.println(c+"\n");
             out.close();
         } catch (FileNotFoundException ex) {
-            System.out.println("Niestety, nie mogę utworzyć pliku!");
+            System.out.println("Blad w tworzeniu pliku!");
         }
 
+        for(int i=0;i<fillContainers.length-1;i++){     //sortowanie babelkowe sortowanie od najwiekszej wagi do najmniejszej
+            for(int j=0;j<fillContainers.length-1;j++){
+                if(fillContainers[j].weight<fillContainers[j+1].weight){
+                    Container temp =fillContainers[j];
+                    fillContainers[j]=fillContainers[j+1];
+                    fillContainers[j+1]=temp;
+                }
+            }
+        }
+
+        Container[][][] Ship = new Container[5][5][600];        //wypelnianie kontenerowca
+        for(int h=0;h<Ship.length;h++){                 //petla do zmiany wysokosci czyli pietra
+            for(int g=0;g<Ship[h].length;g++){                 //petla do zmiany rzedu
+                for(int i=0;i<Ship[0][h].length;i++){       //petla do zmiany pozycji w rzedzie
+                    Ship[h][g][i]=fillContainers[i];
+                }
+            }
+        }
+
+
+        System.out.println("Pierwszy rzad zapelniony");
+
+
     }
-
-
 }
 class Container{
     int weight;
