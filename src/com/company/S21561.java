@@ -22,41 +22,26 @@ public class S21561 {
         return (int)(Math.random() * range) + 1000;
     }
     static String RandomContent(String []con){
-        int range = (con.length- 0) + 1;
+        int range = (con.length-1- 0) + 1;
         return con[(int)(Math.random() * range) + 0];
     }
 
-    static Container RandomContainer(Container a){          //losuje losowy obiekt zeby tablica nie byla po kolei wypelniona
+    static Container RandomContainer(Container a,Container b,Container c,Container d,Container e,Container f){          //losuje losowy obiekt zeby tablica nie byla po kolei wypelniona
         Container[] tab = new Container[6];
         tab[0]=a;
-        //tab[1]=b;
-       // tab[2]=c;
-       // tab[3]=d;
-        //tab[4]=e;
-       // tab[5]=f;
-       // int range = (5- 0) + 1;
-        //return tab[(int)(Math.random() * range) + 0];
-        return tab[0];
+        tab[1]=b;
+        tab[2]=c;
+        tab[3]=d;
+        tab[4]=e;
+        tab[5]=f;
+        int range = (tab.length-1- 0) + 1;
+        return tab[(int)(Math.random() * range) + 0];
     }
 
     public static void main(String[] args) {
-        Container c1 = new Container(1,"piach");
-        BasicContainer a =new BasicContainer(2,"piach");
-        ColdContainer b =new ColdContainer(2,"mleko w kartonach",-14);
-        LiquidContainer c =new LiquidContainer(2000,"paliwo",12);
-        LooseContainer d =new LooseContainer(3500,"koparka", 12);
-        WardrobeContainer e =new WardrobeContainer(4000,"ubrania", 1500);
-        PlatformContainer f=new PlatformContainer(4000,"dziwg");
-        System.out.println(a+"\n"+b+"\n"+c+"\n"+d+"\n"+e+"\n"+f);
 
         Container[] fillContainers = new Container[15000];
 
-
-    /*
-        for(int i=0;i<fillContainers.length;i++){
-            fillContainers[i]=
-        }
-       */
         String[]  BasicContainerContent = new String[7];
         BasicContainerContent[0]="AGD";
         BasicContainerContent[1]="RTV";
@@ -66,23 +51,23 @@ public class S21561 {
         BasicContainerContent[5]="Wsporniki meblowe";
         BasicContainerContent[6]="Przewody elektryczne";
 
-        String []ColdContainer= new String [7];
-        ColdContainer[0]="Mleko w kartonach";
-        ColdContainer[1]="Mieso";
-        ColdContainer[2]="Ryby";
-        ColdContainer[3]="Lody";
-        ColdContainer[4]="Owoce";
-        ColdContainer[5]="Warzywa";
-        ColdContainer[6]="Czekolada";
+        String []ColdContainerContent= new String [7];
+        ColdContainerContent[0]="Mleko w kartonach";
+        ColdContainerContent[1]="Mieso";
+        ColdContainerContent[2]="Ryby";
+        ColdContainerContent[3]="Lody";
+        ColdContainerContent[4]="Owoce";
+        ColdContainerContent[5]="Warzywa";
+        ColdContainerContent[6]="Czekolada";
 
-        String[]  LiquidContainer = new String[7];
-        LiquidContainer[0]="Paliwo";
-        LiquidContainer[1]="Mleko";
-        LiquidContainer[2]="Amoniak";
-        LiquidContainer[3]="Piwo";
-        LiquidContainer[4]="Farba";
-        LiquidContainer[5]="Sok pomarańczowy";
-        LiquidContainer[6]="CocaCola";
+        String[]  LiquidContainerContent = new String[7];
+        LiquidContainerContent[0]="Paliwo";
+        LiquidContainerContent[1]="Mleko";
+        LiquidContainerContent[2]="Amoniak";
+        LiquidContainerContent[3]="Piwo";
+        LiquidContainerContent[4]="Farba";
+        LiquidContainerContent[5]="Sok pomarańczowy";
+        LiquidContainerContent[6]="CocaCola";
 
         String[] LooseContainerContent = new String [7];
         LooseContainerContent[0]="Piach";
@@ -93,26 +78,37 @@ public class S21561 {
         LooseContainerContent[5]="Wegiel";
         LooseContainerContent[6]="Otoczaki";
 
-        String []WardrobeContainer = new String[7];
-        WardrobeContainer[0]="Ubrania Sportowe";
-        WardrobeContainer[1]="Ubrania Zimowe";
-        WardrobeContainer[2]="Ubrania Formalne";
-        WardrobeContainer[3]="Ubrania Letnie";
-        WardrobeContainer[4]="Ubrania Jesienne";
-        WardrobeContainer[5]="Ubrania Wiosenne";
-        WardrobeContainer[6]="Ubrania Pracownicze";
+        String []WardrobeContainerContent = new String[7];
+        WardrobeContainerContent[0]="Ubrania Sportowe";
+        WardrobeContainerContent[1]="Ubrania Zimowe";
+        WardrobeContainerContent[2]="Ubrania Formalne";
+        WardrobeContainerContent[3]="Ubrania Letnie";
+        WardrobeContainerContent[4]="Ubrania Jesienne";
+        WardrobeContainerContent[5]="Ubrania Wiosenne";
+        WardrobeContainerContent[6]="Ubrania Pracownicze";
 
-        String []PlatformContainer = new String[7];
-        PlatformContainer[0]="Samochod";
-        PlatformContainer[1]="Wagon Pociagu";
-        PlatformContainer[2]="Czesci do Czolgu";
-        PlatformContainer[3]="Spychacz";
-        PlatformContainer[4]="Materialy Budowlane";
-        PlatformContainer[5]="Posag";
-        PlatformContainer[6]="Lodz";
+        String []PlatformContainerContent = new String[7];
+        PlatformContainerContent[0]="Samochod";
+        PlatformContainerContent[1]="Wagon Pociagu";
+        PlatformContainerContent[2]="Czesci do Czolgu";
+        PlatformContainerContent[3]="Spychacz";
+        PlatformContainerContent[4]="Materialy Budowlane";
+        PlatformContainerContent[5]="Posag";
+        PlatformContainerContent[6]="Lodz";
 
 
-        System.out.println(RandomContainer(new BasicContainer(RandomWeight(),RandomContent(BasicContainerContent))));
+        for(int i=0;i<fillContainers.length;i++){       //wypelnienie  losowymi kontenerami z losowymi wartosciami tablciy
+            fillContainers[i]=RandomContainer(
+                    new BasicContainer(RandomWeight(),RandomContent(BasicContainerContent)),
+                    new ColdContainer(RandomWeight(),RandomContent(ColdContainerContent),Randomtemp()),
+                    new LiquidContainer(RandomWeight(),RandomContent(LiquidContainerContent),RandomDensity()),
+                    new LooseContainer(RandomWeight(),RandomContent(LooseContainerContent),RandomDensity()),
+                    new WardrobeContainer(RandomWeight(),RandomContent(WardrobeContainerContent),RandomHangers()),
+                    new PlatformContainer(RandomWeight(),RandomContent(PlatformContainerContent)));
+        }
+
+
+
 
     }
 
@@ -196,7 +192,7 @@ class LooseContainer extends Container{
 
     @Override
     public String toString() {
-        return "OverWeightContainer{" +
+        return "LooseContainer{" +
                 "weight=" + weight +
                 ", content='" + content + '\'' +
                 ", density=" + density +
