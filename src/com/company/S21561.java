@@ -1,7 +1,7 @@
 package com.company;
 
-import java.util.Base64;
-import java.util.Random;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 public class S21561 {
 
@@ -41,6 +41,8 @@ public class S21561 {
     public static void main(String[] args) {
 
         Container[] fillContainers = new Container[15000];
+
+
 
         String[]  BasicContainerContent = new String[7];
         BasicContainerContent[0]="AGD";
@@ -108,7 +110,14 @@ public class S21561 {
         }
 
 
-
+        try {
+            PrintWriter out = new PrintWriter("Kontenery.txt");
+            for(Container c:fillContainers)
+                out.println(c+"\n");
+            out.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Niestety, nie mogę utworzyć pliku!");
+        }
 
     }
 
