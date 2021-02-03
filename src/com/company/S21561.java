@@ -1,6 +1,8 @@
 package com.company;
 
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 public class S21561 {
@@ -42,7 +44,7 @@ public class S21561 {
     static int id2=0;
     public static void main(String[] args) {
 
-        Container[] fillContainers = new Container[15000];
+        Container[] fillContainers = new Container[15000];  //tablica wypelniona lsoowaymi kontenerami z losowymi wartosciami
 
         String[]  BasicContainerContent = new String[7];
         BasicContainerContent[0]="AGD";
@@ -112,7 +114,7 @@ public class S21561 {
 
 
         try {
-            PrintWriter out = new PrintWriter("Kontenery.txt");
+            PrintWriter out = new PrintWriter("ListaKontenerow.txt");
             for(Container c:fillContainers)
                 out.println(c+"\n");
             out.close();
@@ -139,7 +141,24 @@ public class S21561 {
                 }
             }
         }
-        System.out.println("Statek wypelniony kontenerami, najciezsze znajduja sie na dole");
+        FileWriter plik=null;
+        for(int h=0;h<Ship.length;h++){                 //petla do zmiany wysokosci czyli pietra
+            for(int g=0;g<Ship[h].length;g++){                 //petla do zmiany rzedu
+                for(int i=0;i<Ship[h][g].length;i++){       //petla do zmiany pozycji w rzedzie
+                    id2++;
+                    try {
+                        plik = new FileWriter("Manifest.txt",true); //append true bo dodaje na koniec jak false to na poczatek
+                        plik.write("numer kontenera:\t"+id2+",\t"+"pozycja:\t"+"pietro:\t"+(h+1)+"\trzad:\t"+(g+1)+"\tmiejsce:\t"+(i+1)+"\t"+Ship[h][g][i]+"\n");
+                        plik.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+
+
 
 
     }
